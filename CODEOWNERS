@@ -1,26 +1,30 @@
 # CODEOWNERS — automatic PR reviewers
 #
-# Format: <pattern> @<github-username>
+# Format: <pattern> @<github-username-or-team>
 # Order matters: later patterns take precedence over earlier ones.
 # See https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+#
+# The @etymolt/maintainers team is the editorial body for the spec.
+# Until that team is created, fallback routing is via the maintainers
+# email at hello@etymolt.com.
 
 # Default reviewer for everything
-*                       @tattarw
+*                       @etymolt/maintainers
 
 # Spec — normative changes need editor review
-/spec/                  @tattarw
-/spec/EVP-1-SPEC.md     @tattarw
-/spec/evp-1.schema.json @tattarw
+/spec/                  @etymolt/maintainers
+/spec/EVP-1-SPEC.md     @etymolt/maintainers
+/spec/evp-1.schema.json @etymolt/maintainers
 
 # Validator + test vectors — need editor review
-/EVP-1-validator-tests.py @tattarw
-/test_vectors/            @tattarw
+/EVP-1-validator-tests.py @etymolt/maintainers
+/test_vectors/            @etymolt/maintainers
 
 # Governance — editor only
-/GOVERNANCE.md          @tattarw
-/CODEOWNERS             @tattarw
-/SECURITY.md            @tattarw
-/CODE_OF_CONDUCT.md     @tattarw
+/GOVERNANCE.md          @etymolt/maintainers
+/CODEOWNERS             @etymolt/maintainers
+/SECURITY.md            @etymolt/maintainers
+/CODE_OF_CONDUCT.md     @etymolt/maintainers
 
 # CI workflows — editor only
-/.github/workflows/     @tattarw
+/.github/workflows/     @etymolt/maintainers

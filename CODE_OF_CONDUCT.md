@@ -30,11 +30,11 @@ The editors are responsible for clarifying and enforcing standards of acceptable
 
 ## Scope
 
-This Code of Conduct applies within all community spaces — GitHub issues, pull requests, discussions, the spec repository, and any official email channel (`evp@etymolt.com`, `security@etymolt.com`).
+This Code of Conduct applies within all community spaces — GitHub issues, pull requests, discussions, the spec repository, and any official email channel (`hello@etymolt.com`, `security@etymolt.com`).
 
 ## Enforcement
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the editors at **`evp@etymolt.com`**. All complaints will be reviewed and investigated promptly and fairly.
+Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the editors at **`hello@etymolt.com`**. All complaints will be reviewed and investigated promptly and fairly.
 
 All editors are obligated to respect the privacy and security of the reporter of any incident.
 

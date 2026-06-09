@@ -13,7 +13,7 @@ EVP/1 is a cryptographic protocol. Reports of vulnerabilities in the signature s
 
 ## Out of scope
 
-- Etymolt product surfaces — those report to `support@etymolt.com`.
+- Etymolt product surfaces — those report to `hello@etymolt.com`.
 - Trademark, legal, or business disputes about the verdicts themselves — Bureau Model (§5.2) applies; a verdict is a clearance signal, not legal advice.
 - Third-party EVP/1 issuers — vulnerability reports about non-Etymolt issuers go to that issuer.
 

@@ -8,8 +8,8 @@
 | **Status** | Public Comment (final-review candidate for board go/no-go 2026-06-08) |
 | **License** | Creative Commons Attribution 4.0 International (CC-BY-4.0) |
 | **Date** | 2026-06-10 |
-| **Editor** | Felix Berger, Etymolt Inc. (Dear One Technologies Pvt Ltd) |
-| **Contact** | `evp@etymolt.com` |
+| **Editor** | Etymolt Inc. (Dear One Technologies Pvt Ltd) |
+| **Contact** | `hello@etymolt.com` |
 | **Canonical URL** | `https://etymolt.com/docs/verdict-protocol` |
 | **Source repository** | `https://github.com/etymolt/evp-spec` |
 | **Comment period** | 2026-06-10 through 2026-09-10 (90 days) |
@@ -614,7 +614,7 @@ https://github.com/etymolt/evp-spec/issues
 
 Issues SHOULD be labeled with the section number being commented on (e.g., `§4.3`, `§6.4`).
 
-Comments MAY also be sent to `evp@etymolt.com` for cases where a public issue is inappropriate. The editor SHALL NOT publish comments received privately without consent.
+Comments MAY also be sent to `hello@etymolt.com` for cases where a public issue is inappropriate. The editor SHALL NOT publish comments received privately without consent.
 
 ### 10.2 Review SLA
 

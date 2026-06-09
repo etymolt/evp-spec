@@ -41,7 +41,7 @@ This repository is the public home of the EVP/1 specification during its 90-day 
 
 - It is **not** a software library. Implementations live in their own repos. (Reference issuer SDKs: `@etymolt/mcp-server`, `etymolt-py`.)
 - It is **not** a forum for legal advice. Verdicts are clearance signals, not opinions. See spec §5.
-- It is **not** the place to file Etymolt product bugs. For those, contact `support@etymolt.com`.
+- It is **not** the place to file Etymolt product bugs. For those, contact `hello@etymolt.com`.
 
 ---
 
@@ -113,7 +113,7 @@ We use four issue templates: `comment-on-section`, `propose-normative-change`, `
 
 ### Private — email the editor
 
-For comments that aren't appropriate for a public issue — for example, an unannounced product name, a legal concern from counsel, a vendor-confidential implementation detail — send to **`evp@etymolt.com`**. The editor will not publish privately received comments without consent. Private comments still count toward the comment record; we'll cite them as "anonymous comment received [date], summarized as [...]" in the consolidated digest.
+For comments that aren't appropriate for a public issue — for example, an unannounced product name, a legal concern from counsel, a vendor-confidential implementation detail — send to **`hello@etymolt.com`**. The editor will not publish privately received comments without consent. Private comments still count toward the comment record; we'll cite them as "anonymous comment received [date], summarized as [...]" in the consolidated digest.
 
 ### What we will NOT accept
 
@@ -137,7 +137,7 @@ The editor commits to:
 
 "Business days" are Mon–Fri excluding US federal holidays. The editor is based on US Pacific time; expect some clock skew on Fridays.
 
-If you don't get an acknowledgment in 5 business days, **bump the issue or email `evp@etymolt.com` directly.** Process failures should be loud; we'd rather hear about a missed SLA than silently miss it.
+If you don't get an acknowledgment in 5 business days, **bump the issue or email `hello@etymolt.com` directly.** Process failures should be loud; we'd rather hear about a missed SLA than silently miss it.
 
 ---
 
@@ -174,12 +174,12 @@ There is no formal voting mechanism in 1.x. There will be one in 2.x.
 
 ## Maintainers
 
-| Role | Person | Contact |
-|---|---|---|
-| **Editor** | Felix Berger | `felix@etymolt.com`, GitHub `@felixberger` |
-| **Legal review (Bureau Model posture, §5)** | Mira Sato | via `evp@etymolt.com` |
-| **Key custody / security (§6)** | Karthik Iyer | via `security@etymolt.com` |
-| **Comment-period coordination** | Felix Berger | `evp@etymolt.com` |
+| Role | Contact |
+|---|---|
+| Editor | `hello@etymolt.com` |
+| Legal review (Bureau Model posture, §5) | `hello@etymolt.com` |
+| Key custody / security (§6) | `security@etymolt.com` |
+| Comment-period coordination | `hello@etymolt.com` |
 
 Etymolt is **Dear One Technologies Pvt Ltd**, operating as Etymolt Inc. for US legal purposes. The spec is © 2026 Etymolt Inc., released under CC-BY-4.0.
 

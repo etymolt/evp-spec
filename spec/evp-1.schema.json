@@ -409,7 +409,11 @@
                 "type": "string"
               },
               "matched": {
-                "type": "boolean"
+                "type": [
+                  "boolean",
+                  "null"
+                ],
+                "description": "true if a hit was detected; false if cleanly searched and clear; null if the check was deferred (e.g., rate-limit shed for out-of-band processing)."
               },
               "language": {
                 "type": "string"

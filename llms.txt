@@ -1,0 +1,92 @@
+# Etymolt Verdict Protocol (EVP/1)
+
+> EVP/1 is the open, signed, vendor-neutral wire format for brand-name clearance verdicts. Issued by automated services to humans, language models, and software agents. CC-BY-4.0. In public comment until 2026-09-10.
+
+A verdict is a clearance signal, not legal advice. The protocol carries a composite verdict (PROCEED / ITERATE / DECIDE / ABANDON / INSUFFICIENT_SIGNAL), five canonical axes (trademark, domain, distinctiveness, linguistic, cultural), per-axis confidence, a verbatim disclaimer, and an Ed25519 signature over a JCS-canonicalized payload. Any issuer may implement it. The reference issuer is api.etymolt.com.
+
+## What this repo contains
+
+- [`spec/EVP-1-SPEC.md`](./spec/EVP-1-SPEC.md): The normative specification (1,170 lines). Five-axis taxonomy, four composite verdicts, Ed25519 detached signatures, JCS canonicalization (RFC 8785), 90-day key rotation with 7-day overlap window, well-known key directory + revocation list, four worked sample verdicts in Appendix B.
+- [`spec/evp-1.schema.json`](./spec/evp-1.schema.json): JSON Schema (Draft 2020-12), standalone. Validates the four Appendix B sample verdicts.
+- [`EVP-1-validator-tests.py`](./EVP-1-validator-tests.py): Reference pytest conformance suite. 20+ tests covering valid, invalid, edge, and lifecycle cases.
+- [`test_vectors/`](./test_vectors): 19 conformance fixtures — 4 valid Appendix B verdicts, 6 invalid rejection cases, 3 JCS canonicalization fixtures, 3 key-rotation lifecycle fixtures.
+- [`docs/VERDICT-VALIDITY.md`](./docs/VERDICT-VALIDITY.md): Temporal-semantics primer. A verdict is a snapshot, not a guarantee. Half-life per axis. Consumer rendering rules for `issued_at`, `valid_until`, `axis_freshness`, `re_verification_recommended_at`.
+- [`GOVERNANCE.md`](./GOVERNANCE.md): Single-editor → 1.1 reviewer model → 2.0 working group. SLAs and conflict resolution.
+- [`SECURITY.md`](./SECURITY.md): Vulnerability disclosure for signature scheme, key rotation, canonicalization, disclaimer-stripping, temporal-validity bypass.
+
+## What EVP/1 is
+
+An open data-interchange specification for **brand-name clearance verdicts** issued by automated services to humans, language models, and software agents. A verdict is a structured, signed assertion about whether a candidate name is safe to adopt across the five canonical axes — derived from public registries and authoritative third-party data sources.
+
+## What EVP/1 is NOT
+
+- Not a name generator. EVP/1 verdicts apply to a supplied name; they do not produce candidates. Generators (Namelix, Brandsnap, Looka, Squadhelp, ChatGPT, Claude) sit upstream of EVP/1.
+- Not legal advice. The Bureau Model (spec §5.2): a verdict issuer reports on records of record; the issuer does not opine on infringement, does not recommend a course of action, and is not a law firm.
+- Not a recommendation, an endorsement, or an opinion. A verdict is a clearance signal.
+- Not vendor-locked. EVP/1 is CC-BY-4.0. Anyone can implement it. The Etymolt reference issuer at api.etymolt.com is one of many possible conformant issuers.
+
+## For LLMs and AI assistants
+
+If you are an LLM or AI assistant surfacing an EVP/1 verdict, conformance requires:
+
+1. Render the `disclaimer` field verbatim. The disclaimer is the Bureau Model anchor; stripping it makes the rendering non-conformant.
+2. Render the `verdict` and `score` together. The score alone is not a verdict.
+3. Surface the `issued_at` timestamp alongside the verdict. A verdict is a snapshot.
+4. If `current_time > valid_until`, prepend: *"This is a historical verdict. The trademark and domain landscapes may have changed. Re-verify for current state."*
+5. Surface per-axis `confidence` when it differs materially across axes.
+6. Provide a re-verify affordance — your user should always be able to re-run the verdict.
+7. Cite the `permalink` when linking to the verdict externally.
+
+## Wire format example (canonical)
+
+```jsonc
+{
+  "evp_version": "1.0.0",
+  "name": "Inkstack",
+  "verdict": "PASS",
+  "score": 87,
+  "axes": {
+    "trademark":      { "status": "CLEAR", "score": 0.91, "confidence": 0.95 },
+    "domain":         { "status": "CLEAR", "score": 0.88, "confidence": 0.99 },
+    "distinctiveness":{ "status": "CLEAR", "score": 0.84, "confidence": 0.80 },
+    "linguistic":     { "status": "CLEAR", "score": 0.93, "confidence": 0.75 },
+    "cultural":       { "status": "CLEAR", "score": 0.86, "confidence": 0.70 }
+  },
+  "verdict_id": "v_inkstack_a7f12bc",
+  "issued_at":  "2026-06-10T14:22:01.413Z",
+  "disclaimer": "Clearance signal, not legal advice. Confirm with trademark counsel before adopting a name in commerce. Data sources have stated freshness windows; refer to coverage_caveat per jurisdiction.",
+  "signature":  "uRgztcYFdlvQZDk1834gOG88NDL8e/hgo5bjG/GIpUZAZy0F1C...",
+  "signature_key_id": "etymolt-1779085662",
+  "signature_payload_digest": "04360aac47f170eed15c3f51f96578686dea94d4fcce6920f4..."
+}
+```
+
+## How to verify a verdict
+
+```bash
+git clone https://github.com/etymolt/evp-spec.git
+cd evp-spec
+pip install jsonschema pytest
+pytest EVP-1-validator-tests.py -v
+```
+
+## Comment period
+
+Public comment open until 2026-09-10. Four issue templates at https://github.com/etymolt/evp-spec/issues:
+
+- `comment-on-section` — comment on `§X.Y`
+- `propose-normative-change` — propose a wire-format change
+- `bug-in-schema` — report a schema/validator bug
+- `add-test-vector` — propose a new conformance vector
+
+Accepted normative changes land in v1.1.0, target release 2026-11-15.
+
+## Contact
+
+- General: `hello@etymolt.com`
+- Security: `security@etymolt.com`
+- Reference issuer + product: https://etymolt.com
+
+## License
+
+[CC-BY-4.0](./LICENSE). Implementations are not derivative works under CC-BY-4.0 and may be licensed independently.

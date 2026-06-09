@@ -66,4 +66,4 @@ By contributing, you agree your contribution is licensed under [CC-BY-4.0](./LIC
 
 See [`CODEOWNERS`](./CODEOWNERS) for who reviews what.
 
-For private comments — unannounced product names, legal-sensitive concerns from counsel, vendor-confidential details — email `evp@etymolt.com`. Private comments still count toward the comment record; we'll cite them as "anonymous comment received [date], summarized as [...]" in the consolidated digest.
+For private comments — unannounced product names, legal-sensitive concerns from counsel, vendor-confidential details — email `hello@etymolt.com`. Private comments still count toward the comment record; we'll cite them as "anonymous comment received [date], summarized as [...]" in the consolidated digest.

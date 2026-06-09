@@ -29,7 +29,7 @@ The editor commits to:
 
 "Business days" are Mon–Fri excluding US federal holidays. The editor is based on US Pacific time; expect some clock skew on Fridays.
 
-If you don't get an acknowledgment in 5 business days, **bump the issue or email `evp@etymolt.com` directly**. Process failures should be loud.
+If you don't get an acknowledgment in 5 business days, **bump the issue or email `hello@etymolt.com` directly**. Process failures should be loud.
 
 ## What "accepted" means
 
