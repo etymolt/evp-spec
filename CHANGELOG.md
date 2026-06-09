@@ -1,0 +1,88 @@
+# Changelog
+
+All notable changes to the Etymolt Verdict Protocol specification are
+documented here. The format follows
+[Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the
+project's versioning aims for [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
+applied to a specification rather than a software library:
+
+- **MAJOR** versions (1.0.0 → 2.0.0) introduce normative breaking changes.
+  An implementation conformant to a major version is NOT guaranteed to
+  validate documents issued under a different major version.
+- **MINOR** versions (1.0.0 → 1.1.0) add backwards-compatible normative
+  capability (new optional fields, new enum values declared as extension,
+  new conformance tests).
+- **PATCH** versions (1.0.0 → 1.0.1) are editorial: clarifications,
+  typos, broken-link fixes, expanded examples. No conformance changes.
+
+## [Unreleased]
+
+Comments received during the public-comment period (2026-06-10 →
+2026-09-10) are landed against this section. Editorial corrections roll
+forward into the next patch release; normative changes accepted for the
+next minor release are tagged `[accepted-for-1.1]` here and shipped in
+1.1.0.
+
+## [1.0.0] — 2026-06-10
+
+Initial public comment release.
+
+### Added
+
+- The normative wire format for an EVP/1 verdict envelope (§3, §4).
+- The five-axis taxonomy: trademark, domain, distinctiveness, linguistic,
+  cultural (§4.1 — §4.5).
+- The composite verdict taxonomy: `PASS`, `DECIDE`, `BLOCK`,
+  `INSUFFICIENT_SIGNAL` (§3.4).
+- The per-axis status taxonomy: `CLEAR`, `CAUTION`, `BLOCKED`,
+  `INSUFFICIENT_SIGNAL`, `UNKNOWN` (§3.5).
+- The `disclaimer` field requirement (§5) — every consumer that surfaces
+  a verdict MUST surface the disclaimer verbatim. This is the Bureau
+  Model anchor.
+- Ed25519 detached signature protocol over a JCS-canonicalized payload
+  (§6.1 — §6.3, RFC 8032 + RFC 8785).
+- Key rotation specification (§6.4): 90-day cadence, 7-day overlap window,
+  dual-signature pattern during overlap, key-revocation list at a
+  well-known URL, JWKS-style discovery.
+- Conformance test vector inventory (§8.3) covering valid, invalid, and
+  edge cases for issuers and consumers.
+- Four worked sample verdicts in Appendix B:
+  - B.1 PASS  (`Inkstack`) — the canonical "ship it" example.
+  - B.2 DECIDE (`Stratagem`) — the canonical "judgment call" example.
+  - B.3 BLOCK (`Sigil`) — the canonical "do not use" example.
+  - B.4 INSUFFICIENT_SIGNAL — the canonical "we cannot tell" example,
+    drawn from a live Etymolt API response.
+- JSON Schema (Draft 2020-12) as Appendix A and as a standalone file at
+  `spec/evp-1.schema.json`.
+- Reference validator (`EVP-1-validator-tests.py`) with 20 conformance
+  tests covering all four sample verdicts, six invalid cases, six edge
+  cases, and four lifecycle conformance checks (key rotation overlap
+  window, key revocation, unknown key id, signature expiry).
+
+### Why a single release at 1.0.0
+
+EVP/1 ships at 1.0.0 — not 0.x — because the spec is intended to be
+implemented against, not iterated against. A 0.x label invites
+implementers to wait for "the real release"; that delays adoption and
+delays the network effects this protocol depends on. The 90-day open
+comment period is the iteration cycle. Normative changes accepted during
+that period land in 1.1.0.
+
+### Changes since 2026-06-05 internal draft
+
+These are documented here for transparency; they do not affect any
+implementation already targeting the 2026-06-05 draft, since that draft
+was internal.
+
+1. Appendix B gained a fourth sample (§B.4) for the
+   `INSUFFICIENT_SIGNAL` case. Implementations relying on Appendix B
+   inventory should pull in B.4.
+2. §6.4 (key rotation) was materially tightened: rotation cadence, 7-day
+   overlap window, dual-signature pattern during overlap, key-revocation
+   list at `/.well-known/evp-keys-revoked.json`, and JWKS-style key
+   discovery at `/.well-known/evp-keys.json` are now normative.
+3. §8.3 gained an explicit `INSUFFICIENT_SIGNAL` acceptance test in the
+   conformance test-vector inventory.
+
+[Unreleased]: https://github.com/etymolt/evp-spec/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/etymolt/evp-spec/releases/tag/v1.0.0
