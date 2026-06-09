@@ -1,0 +1,26 @@
+# CODEOWNERS — automatic PR reviewers
+#
+# Format: <pattern> @<github-username>
+# Order matters: later patterns take precedence over earlier ones.
+# See https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default reviewer for everything
+*                       @tattarw
+
+# Spec — normative changes need editor review
+/spec/                  @tattarw
+/spec/EVP-1-SPEC.md     @tattarw
+/spec/evp-1.schema.json @tattarw
+
+# Validator + test vectors — need editor review
+/EVP-1-validator-tests.py @tattarw
+/test_vectors/            @tattarw
+
+# Governance — editor only
+/GOVERNANCE.md          @tattarw
+/CODEOWNERS             @tattarw
+/SECURITY.md            @tattarw
+/CODE_OF_CONDUCT.md     @tattarw
+
+# CI workflows — editor only
+/.github/workflows/     @tattarw

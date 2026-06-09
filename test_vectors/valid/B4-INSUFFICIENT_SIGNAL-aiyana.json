@@ -1,0 +1,109 @@
+{
+  "evp_version": "1.0.0",
+  "name": "Aiyana",
+  "verdict": "INSUFFICIENT_SIGNAL",
+  "score": 50,
+  "axes": {
+    "trademark": {
+      "status": "INSUFFICIENT_SIGNAL",
+      "jurisdictions_consulted": [
+        "USPTO_bulk",
+        "USPTO_TTAB",
+        "EUIPO_live_API",
+        "UKIPO_domestic",
+        "WIPO_Madrid_IR",
+        "INPI_BR",
+        "IPINDIA_domestic"
+      ],
+      "colliding_marks": [],
+      "nice_classes_assumed": [
+        9,
+        42
+      ],
+      "coverage_caveat": "INPI_BR returned HTTP 502 across 3 retries; IPINDIA_domestic timed out; WIPO_Madrid_IR returned only 2 of 5 designated-state mirrors. Determinate conflict in 9/42 not established."
+    },
+    "domain": {
+      "status": "CAUTION",
+      "tlds_consulted": [
+        {
+          "tld": ".com",
+          "method": "RDAP_authoritative",
+          "definitive": true,
+          "result": "registered"
+        },
+        {
+          "tld": ".io",
+          "method": "RDAP_authoritative",
+          "definitive": true,
+          "result": "available"
+        }
+      ],
+      "recommended_variant": {
+        "domain": "aiyana.io",
+        "registrar": "Cloudflare",
+        "price_usd": 41.0
+      },
+      "aftermarket_observed": true
+    },
+    "distinctiveness": {
+      "status": "MODERATE",
+      "platforms_consulted": [
+        {
+          "platform": "github",
+          "status": "available",
+          "url": "https://github.com/aiyana",
+          "claimed": true
+        }
+      ],
+      "workaround_variants_available": [
+        "@aiyanahq",
+        "@useaiyana"
+      ]
+    },
+    "linguistic": {
+      "status": "CLEAR",
+      "locales_evaluated": [
+        "en-US",
+        "es-MX",
+        "pt-BR"
+      ],
+      "advisory": true,
+      "method": "static rule-based heuristic"
+    },
+    "cultural": {
+      "status": "INSUFFICIENT_SIGNAL",
+      "sources_consulted": 28,
+      "cultural_sources_consulted": [
+        {
+          "source": "sacred_names",
+          "matched": false,
+          "language": "multi",
+          "caveat": "Tier-1 catalog does not cover Indigenous-Americas namespaces in depth"
+        },
+        {
+          "source": "llm_cross_cultural",
+          "matched": null,
+          "language": "multi",
+          "caveat": "Rate-limit shed; deferred out-of-band."
+        }
+      ],
+      "markets_covered": [
+        "US",
+        "UK",
+        "ES",
+        "MX",
+        "BR",
+        "DE",
+        "FR"
+      ],
+      "coverage_caveat": "2 of 7 consulted markets lacked Indigenous-Americas lexicon coverage; LLM panel did not return synchronously."
+    }
+  },
+  "verdict_id": "v_aiyana_insig_a91f3c7d4e8f",
+  "issued_at": "2026-06-10T14:45:22.108Z",
+  "confidence": 38,
+  "disclaimer": "Clearance signal, not legal advice. Confirm with trademark counsel before adopting a name in commerce. Data sources have stated freshness windows; refer to coverage_caveat per jurisdiction.",
+  "signature": "uRgztcYFdlvQZDk1834gOG88NDL8e/hgo5bjG/GIpUZAZy0F1CXyIX1bOfFr7EToJsihPuNgPXRszKQCexSABw==",
+  "signature_key_id": "etymolt-1779085662",
+  "signature_payload_digest": "04360aac47f170eed15c3f51f96578686dea94d4fcce6920f443484500353166"
+}

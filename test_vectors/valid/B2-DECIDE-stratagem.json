@@ -1,0 +1,66 @@
+{
+  "evp_version": "1.0.0",
+  "name": "Stratagem",
+  "verdict": "DECIDE",
+  "score": 60,
+  "axes": {
+    "trademark": {
+      "status": "CAUTION",
+      "jurisdictions_consulted": [
+        "EUIPO_live_API",
+        "UKIPO_domestic",
+        "USPTO_TTAB",
+        "USPTO_bulk",
+        "WIPO_Madrid_IR"
+      ],
+      "colliding_marks": [],
+      "coverage_caveat": "Common-word mark; class-dependent risk."
+    },
+    "domain": {
+      "status": "CAUTION",
+      "tlds_consulted": [
+        {
+          "tld": ".com",
+          "method": "RDAP_authoritative",
+          "definitive": true,
+          "result": "registered"
+        }
+      ],
+      "aftermarket_observed": true
+    },
+    "distinctiveness": {
+      "status": "WEAK",
+      "platforms_consulted": [
+        {
+          "platform": "github",
+          "status": "taken",
+          "url": "https://github.com/stratagem",
+          "claimed": true
+        }
+      ],
+      "workaround_variants_available": [
+        "@stratagemhq"
+      ]
+    },
+    "linguistic": {
+      "status": "CLEAR",
+      "advisory": true,
+      "method": "static rule-based heuristic"
+    },
+    "cultural": {
+      "status": "CLEAR",
+      "sources_consulted": 32,
+      "markets_covered": [
+        "US",
+        "UK",
+        "IN"
+      ]
+    }
+  },
+  "verdict_id": "v_ca83be889da34a",
+  "issued_at": "2026-06-05T04:15:41.185Z",
+  "disclaimer": "Clearance signal, not legal advice. Confirm with trademark counsel before adopting a name in commerce. Data sources have stated freshness windows; refer to coverage_caveat per jurisdiction.",
+  "signature": "uRgztcYFdlvQZDk1834gOG88NDL8e/hgo5bjG/GIpUZAZy0F1CXyIX1bOfFr7EToJsihPuNgPXRszKQCexSABw==",
+  "signature_key_id": "etymolt-1779085662",
+  "signature_payload_digest": "04360aac47f170eed15c3f51f96578686dea94d4fcce6920f443484500353166"
+}

@@ -1,0 +1,63 @@
+{
+  "evp_version": "1.0.0",
+  "name": "Sigil",
+  "verdict": "BLOCK",
+  "score": 18,
+  "axes": {
+    "trademark": {
+      "status": "BLOCKED",
+      "jurisdictions_consulted": [
+        "USPTO_bulk",
+        "USPTO_TTAB"
+      ],
+      "colliding_marks": [
+        {
+          "wordmark": "SIGIL",
+          "owner": "Sigil Software Inc.",
+          "serial_number": "97123456",
+          "registration_number": "7012345",
+          "nice_classes": [
+            9
+          ],
+          "filing_date": "2022-04-11",
+          "status": "Registered",
+          "deep_link": "https://tsdr.uspto.gov/#caseNumber=97123456&caseType=SERIAL_NO&searchType=statusSearch"
+        }
+      ],
+      "nice_classes_assumed": [
+        9,
+        42
+      ]
+    },
+    "domain": {
+      "status": "BLOCKED",
+      "tlds_consulted": [
+        {
+          "tld": ".com",
+          "method": "RDAP_authoritative",
+          "definitive": true,
+          "result": "registered"
+        }
+      ],
+      "aftermarket_observed": true
+    },
+    "distinctiveness": {
+      "status": "BLOCKED",
+      "workaround_variants_available": []
+    },
+    "linguistic": {
+      "status": "CLEAR",
+      "advisory": true
+    },
+    "cultural": {
+      "status": "CLEAR",
+      "sources_consulted": 32
+    }
+  },
+  "verdict_id": "v_sigil_blocked_2026",
+  "issued_at": "2026-06-10T14:30:00.000Z",
+  "disclaimer": "Clearance signal, not legal advice. Confirm with trademark counsel before adopting a name in commerce. Data sources have stated freshness windows; refer to coverage_caveat per jurisdiction.",
+  "signature": "uRgztcYFdlvQZDk1834gOG88NDL8e/hgo5bjG/GIpUZAZy0F1CXyIX1bOfFr7EToJsihPuNgPXRszKQCexSABw==",
+  "signature_key_id": "etymolt-1779085662",
+  "signature_payload_digest": "04360aac47f170eed15c3f51f96578686dea94d4fcce6920f443484500353166"
+}

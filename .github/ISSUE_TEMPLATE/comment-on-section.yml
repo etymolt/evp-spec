@@ -1,0 +1,60 @@
+name: Comment on a section
+description: Comment on a specific section of the EVP/1 specification (e.g., §4.3 trademark axis).
+title: "[§X.Y] Brief description of your comment"
+labels: ["comment-period", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for participating in the EVP/1 public comment period (2026-06-10 → 2026-09-10).
+
+        **Please anchor your comment to a specific section number** (e.g., `§4.3.2`). Specificity is how we triage at scale.
+
+  - type: input
+    id: section
+    attributes:
+      label: Section reference
+      description: Section number you're commenting on (e.g., `§4.3.2`, `§6.4.3`, Appendix B.2)
+      placeholder: "§"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of comment is this?
+      options:
+        - Editorial — typo, broken link, prose clarity
+        - Clarification — section is confusing, want it expanded
+        - Normative question — does the spec say what I think it says?
+        - Disagreement with the normative claim
+        - Use case the spec doesn't currently handle
+    validations:
+      required: true
+
+  - type: textarea
+    id: body
+    attributes:
+      label: Comment
+      description: |
+        State what's confusing, missing, wrong, or could be better.
+
+        If you're proposing a change, say what breaks today and what you'd ship instead. A diff is welcome but not required.
+    validations:
+      required: true
+
+  - type: input
+    id: org
+    attributes:
+      label: Organization (optional)
+      description: If you represent an organization that may implement EVP/1, say so. Implementation-surface comments are weighted higher.
+      placeholder: "e.g., Acme Inc. (planning to implement)"
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Contribution terms
+      description: By submitting you agree to the [Code of Conduct](../CODE_OF_CONDUCT.md) and [contribution terms](../CONTRIBUTING.md).
+      options:
+        - label: I agree to the Code of Conduct
+          required: true

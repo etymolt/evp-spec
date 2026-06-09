@@ -1,0 +1,62 @@
+name: Bug in schema or validator
+description: Report a mismatch between the JSON Schema, the normative prose, or the reference validator (`EVP-1-validator-tests.py`).
+title: "[BUG] Brief description of the bug"
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Bugs in the schema or validator block conformance. We treat them as P1 unless they're cosmetic.
+
+        **Security-sensitive defects** (e.g., the validator accepts a verdict that should be rejected for cryptographic reasons) go to `security@etymolt.com`, not here. See [SECURITY.md](../SECURITY.md).
+
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Which surface has the bug?
+      options:
+        - JSON Schema (`spec/evp-1.schema.json`)
+        - Normative prose (`spec/EVP-1-SPEC.md`)
+        - Reference validator (`EVP-1-validator-tests.py`)
+        - Test vector (file in `test_vectors/`)
+        - JSON Schema ↔ prose mismatch
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: How to reproduce
+      description: |
+        Steps to reproduce. A minimal failing input is ideal:
+
+        ```json
+        { ... your input verdict ... }
+        ```
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: env
+    attributes:
+      label: Environment
+      placeholder: |
+        - Python version:
+        - jsonschema version:
+        - pytest version:
+        - OS:

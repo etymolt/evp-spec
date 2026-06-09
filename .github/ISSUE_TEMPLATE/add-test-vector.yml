@@ -1,0 +1,49 @@
+name: Add a test vector
+description: Propose a new test vector to add to the conformance corpus.
+title: "[VECTOR] Brief description of the vector"
+labels: ["test-vector", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Test vectors are the conformance gate. New vectors should exercise a corner of the spec that the existing 19 don't already cover.
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of vector?
+      options:
+        - Valid — should validate against the schema
+        - Invalid — should be rejected by the schema or validator
+        - Canonicalization (JCS) — input + expected canonical output
+        - Key rotation — overlap window, revocation, or unknown-key fixture
+    validations:
+      required: true
+
+  - type: textarea
+    id: vector
+    attributes:
+      label: The vector
+      description: Include the full JSON content of the proposed test vector.
+      render: json
+    validations:
+      required: true
+
+  - type: textarea
+    id: reasoning
+    attributes:
+      label: Why this vector?
+      description: |
+        What corner of the spec does this exercise that the existing corpus doesn't?
+
+        Anchor to a section number if applicable.
+    validations:
+      required: true
+
+  - type: textarea
+    id: validator
+    attributes:
+      label: Validator assertion (optional)
+      description: |
+        If you can sketch the assertion that should be added to `EVP-1-validator-tests.py`, include it here.
+      render: python

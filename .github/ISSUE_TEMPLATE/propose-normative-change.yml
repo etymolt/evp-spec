@@ -1,0 +1,72 @@
+name: Propose a normative change
+description: Propose a change to the normative wire format, signature protocol, status taxonomy, or any MUST/SHALL/SHOULD rule in the spec.
+title: "[NORMATIVE] §X.Y: Brief description"
+labels: ["normative-change", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Normative changes alter the wire format, signature protocol, or any MUST/SHALL/SHOULD rule. They land in the next minor release (v1.1, target 2026-11-15).
+
+        Accepted normative changes go through implementer review before merging.
+
+  - type: input
+    id: section
+    attributes:
+      label: Section reference
+      description: Section number this change affects
+      placeholder: "§"
+    validations:
+      required: true
+
+  - type: textarea
+    id: current
+    attributes:
+      label: What the spec says today
+      description: Quote the relevant prose from the spec (or summarize if it spans paragraphs)
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What breaks
+      description: |
+        Concretely, what fails today because the spec says what it does? A use case that breaks, an implementation surface that's awkward, a security primitive that's unsafe.
+
+        Be specific. "It's confusing" is not enough; "It conflicts with §X.Y" or "It can't represent the case where ..." is.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What you'd ship instead
+      description: |
+        Concrete proposal. A diff against the current spec is ideal but not required.
+
+        If your proposal changes the JSON Schema, include the schema diff.
+
+        If it changes any MUST/SHALL/SHOULD rule, state which one.
+    validations:
+      required: true
+
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact on existing implementations
+      description: Would existing v1.0 implementations need to change? Would test vectors need to be regenerated? Would issuers need to re-sign anything?
+
+  - type: input
+    id: org
+    attributes:
+      label: Organization (optional)
+      description: If you represent an organization that may implement EVP/1, say so.
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Contribution terms
+      options:
+        - label: I agree to the Code of Conduct
+          required: true

@@ -1,5 +1,11 @@
 # Etymolt Verdict Protocol (EVP/1)
 
+[![Validate](https://github.com/etymolt/evp-spec/actions/workflows/validate.yml/badge.svg)](https://github.com/etymolt/evp-spec/actions/workflows/validate.yml)
+[![License: CC-BY-4.0](https://img.shields.io/badge/license-CC--BY--4.0-blue.svg)](./LICENSE)
+[![Version](https://img.shields.io/badge/version-1.0.0-green.svg)](./CHANGELOG.md)
+[![Comment Period: Open](https://img.shields.io/badge/comment%20period-open%20until%202026--09--10-orange.svg)](https://github.com/etymolt/evp-spec/issues)
+
+
 An open data-interchange specification for **brand-name clearance verdicts** issued by automated services to humans, language models, and software agents.
 
 A verdict is a structured, signed assertion about whether a candidate name is safe to adopt across five canonical axes — **trademark, domain, distinctiveness, linguistic, cultural** — derived from public registries and authoritative third-party data sources.
