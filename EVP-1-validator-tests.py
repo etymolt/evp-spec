@@ -84,7 +84,7 @@ EVP_1_SCHEMA: dict[str, Any] = {
         "name": {"type": "string", "minLength": 1, "maxLength": 64},
         "verdict": {
             "type": "string",
-            "enum": ["PASS", "DECIDE", "BLOCK", "INSUFFICIENT_SIGNAL"],
+            "enum": ["PROCEED", "PROCEED_STRATEGIC", "ABANDON"],
         },
         "score": {"type": "integer", "minimum": 0, "maximum": 100},
         "axes": {
@@ -502,7 +502,7 @@ def _pass_verdict() -> dict[str, Any]:
     return {
         "evp_version": "1.0.0",
         "name": "Inkstack",
-        "verdict": "PASS",
+        "verdict": "PROCEED",
         "score": 87,
         "axes": {
             "trademark": {
@@ -570,7 +570,7 @@ def _decide_verdict() -> dict[str, Any]:
     return {
         "evp_version": "1.0.0",
         "name": "Stratagem",
-        "verdict": "DECIDE",
+        "verdict": "PROCEED_STRATEGIC",
         "score": 60,
         "axes": {
             "trademark": {
@@ -634,7 +634,7 @@ def _block_verdict() -> dict[str, Any]:
     return {
         "evp_version": "1.0.0",
         "name": "Sigil",
-        "verdict": "BLOCK",
+        "verdict": "ABANDON",
         "score": 18,
         "axes": {
             "trademark": {
@@ -695,7 +695,7 @@ def _insufficient_signal_verdict() -> dict[str, Any]:
     return {
         "evp_version": "1.0.0",
         "name": "Aiyana",
-        "verdict": "INSUFFICIENT_SIGNAL",
+        "verdict": "ABANDON", "status": "partial",
         "score": 50,
         "axes": {
             "trademark": {

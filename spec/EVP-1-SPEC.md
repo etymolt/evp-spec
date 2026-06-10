@@ -513,7 +513,7 @@ For all 1.X versions:
 
 - The five axis names (`trademark`, `domain`, `distinctiveness`, `linguistic`, `cultural`) MUST NOT change.
 - The status values `CLEAR`, `CAUTION`, `BLOCKED`, `INSUFFICIENT_SIGNAL`, `UNKNOWN` MUST NOT change in meaning.
-- The composite verdict values `PASS`, `DECIDE`, `BLOCK`, `INSUFFICIENT_SIGNAL` MUST NOT change in meaning.
+- The composite verdict values `PROCEED`, `PROCEED_STRATEGIC`, `ABANDON` MUST NOT change in meaning.
 - The disclaimer requirement (§5) MUST be preserved.
 - The signature protocol (§6) MUST be preserved.
 
