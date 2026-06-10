@@ -26,15 +26,11 @@
       "minLength": 1,
       "maxLength": 64
     },
-    "verdict": {
-      "type": "string",
-      "enum": [
-        "PASS",
-        "DECIDE",
-        "BLOCK",
-        "INSUFFICIENT_SIGNAL"
-      ]
-    },
+    "verdict": [
+      "PROCEED",
+      "PROCEED_STRATEGIC",
+      "ABANDON"
+    ],
     "score": {
       "type": "integer",
       "minimum": 0,

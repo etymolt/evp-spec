@@ -17,6 +17,20 @@ applied to a specification rather than a software library:
 
 ## [Unreleased]
 
+## [1.0.1] — 2026-06-10
+
+### Changed (NORMATIVE)
+
+- §3.4 verdict taxonomy reduced from 4-value (`PASS`/`DECIDE`/`BLOCK`/`INSUFFICIENT_SIGNAL`) to 3-value: `PROCEED` / `PROCEED_STRATEGIC` / `ABANDON`. Per Etymolt board ruling 2026-06-10 §7.2. The 4-value model was aspirational; the 3-value model aligns with the live API, all reference SDKs (`@etymolt/sdk` v0.2.0, `etymolt` v0.2.0), and the user-facing verdict UX.
+- New required field `status: "complete" | "partial"` — absorbs the prior `INSUFFICIENT_SIGNAL` semantics, distinguishing verdict from data-quality.
+- New optional field `reason: string` — sub-codes preserving granularity (`clean`, `coexistence_required`, `hard_blocker`, `no_workaround`, `insufficient_signal`).
+
+### Conformance
+
+Test fixtures B.1–B.4 updated. Sample verdicts rebased to new enum.
+
+
+
 Comments received during the public-comment period (2026-06-10 →
 2026-09-10) are landed against this section. Editorial corrections roll
 forward into the next patch release; normative changes accepted for the
