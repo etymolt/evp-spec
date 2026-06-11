@@ -1,5 +1,41 @@
 # Changelog
 
+
+### Axis vocabulary realignment (conscious revision)
+
+The draft v1.0.0 schema enumerated the five canonical axes as
+`trademark` / `domain` / `distinctiveness` / `linguistic` / `cultural`,
+with §516 stating the names "MUST NOT change." This revision changes
+two of those names while the spec is in public comment:
+
+  - `distinctiveness` → `sound_symbolism`
+  - `linguistic`      → `pronunciation`
+
+Reason: the production engine has emitted `sound_symbolism` and
+`pronunciation` as the per-axis scoring vocabulary since 2026-Q1.
+The v1.0.0 draft's abstract category names (`distinctiveness` /
+`linguistic`) never matched what the API actually scored — they were
+aspirational supercategories that would have required a separate
+projection layer to translate the engine's per-axis output. Rather
+than ship that projection layer (and the test surface it would need)
+under launch pressure, the spec is being brought into line with the
+operational vocabulary while public comment is still open.
+
+This is a CONSCIOUS revision, not drift. It is published here and
+flagged so spec readers see a deliberate change rather than a hidden
+inconsistency.
+
+### Axis value shape — int OR object (v1.0 dual form)
+
+The schema now accepts each axis as either:
+  - **integer 0-100** — terse v1.0 default form (the live API surface today)
+  - **object** with status/score/findings/evidence_of_record — v1.1+
+    structured form, recommended for verdicts downstream agents will
+    reason over.
+
+v1.1 will likely tighten this to object-only with a deprecation
+window for the integer form.
+
 ## [1.1.0] — 2026-06-10
 
 ### Changed (BREAKING for v1.0.0 draft consumers — additive for live API consumers)
