@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.1.0] — 2026-06-10
+
+### Changed (BREAKING for v1.0.0 draft consumers — additive for live API consumers)
+
+- Composite verdict label moved from 4-value (`PASS` / `DECIDE` / `BLOCK` / `INSUFFICIENT_SIGNAL`) to **3-value** (`PROCEED` / `PROCEED_STRATEGIC` / `ABANDON`).
+  - The v1.0.0 schema (`spec/evp-1.schema.json`) already encoded the 3-value enum — this changelog entry catches SPEC.md up to the schema.
+  - Founder ruling 2026-06-10 supersedes Karthik's Option C 6-1 board ruling (which proposed additive `verdict_summary` alongside the 5-value engine field). The canonical surface is now 3-value end-to-end.
+- New `status` field on the verdict envelope: `"complete"` | `"partial"`. `partial` replaces the v1.0.0 top-level `INSUFFICIENT_SIGNAL` semantics. Per-axis `INSUFFICIENT_SIGNAL` is UNCHANGED.
+- New `reason` field on the verdict envelope: stable closed-set sub-code (`clean` | `famous_mark` | `high_collision` | `no_distinctiveness` | `descriptive` | `insufficient_corpus`).
+- New `verdict_legacy` OPTIONAL field for back-compat with the v1.0.0 5-state engine vocabulary.
+
+### Migration
+
+| v1.0.0 draft           | v1.1.0 canonical          | status      | reason                  |
+|------------------------|---------------------------|-------------|-------------------------|
+| PASS                   | PROCEED                   | complete    | clean                   |
+| DECIDE                 | PROCEED_STRATEGIC         | complete    | high_collision          |
+| BLOCK                  | ABANDON                   | complete    | famous_mark             |
+| INSUFFICIENT_SIGNAL    | (best estimate)           | partial     | insufficient_corpus     |
+
+Issuers SHOULD ship `verdict_legacy` populated with the v1.0.0 4-value label during the transition window (through 2026-08-10) so consumers built against the v1.0.0 draft can dispatch on both.
 All notable changes to the Etymolt Verdict Protocol specification are
 documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the

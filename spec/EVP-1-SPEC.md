@@ -97,7 +97,7 @@ For the purposes of this document, the following terms are defined.
 
 **finding.** A discrete piece of evidence of record contributing to an axis status. A finding includes at minimum a source reference, a status contribution, and (where applicable) a deep link to the underlying record.
 
-**status.** The qualitative classification of an axis. EVP/1 defines six status values: `CLEAR`, `CAUTION`, `BLOCKED`, `INSUFFICIENT_SIGNAL`, `UNKNOWN`, and (at the top-level verdict envelope only) `PASS` / `DECIDE` / `BLOCK` / `INSUFFICIENT_SIGNAL` as composite verdict labels.
+**status.** The qualitative classification of an axis. EVP/1 defines six status values: `CLEAR`, `CAUTION`, `BLOCKED`, `INSUFFICIENT_SIGNAL`, `UNKNOWN`, and (at the top-level verdict envelope only) `PROCEED` / `PROCEED_STRATEGIC` / `ABANDON` as composite verdict labels (3-value canonical 2026-06-10; founder ruling supersedes the 4-value PASS/DECIDE/BLOCK/INSUFFICIENT_SIGNAL set documented in the v1.0.0 draft).
 
   - **`CLEAR`** — Authoritative data was consulted; no conflict found. The axis is safe to rely on within the disclosed coverage.
   - **`CAUTION`** — Authoritative data was consulted; a non-blocking risk signal was found. The consumer SHOULD review the per-axis findings.
@@ -135,7 +135,7 @@ A verdict is a JSON object (RFC 8259) conforming to the schema in Appendix A. Th
 |---|---|---|---|
 | `evp_version` | string | MUST | The EVP version. For this specification, the value MUST be `"1.0.0"`. |
 | `name` | string | MUST | The candidate name evaluated. UTF-8. 1–64 graphemes. |
-| `verdict` | string | MUST | The composite verdict label. One of `PASS`, `DECIDE`, `BLOCK`, or `INSUFFICIENT_SIGNAL`. |
+| `verdict` | string | MUST | The composite verdict label. One of `PROCEED`, `PROCEED_STRATEGIC`, or `ABANDON`. The companion `status` field (`complete` | `partial`) carries the engine's signal-sufficiency state (partial replaces the legacy `INSUFFICIENT_SIGNAL` at the top level). |
 | `score` | integer | MUST | A composite score in `[0, 100]`. The interpretation of the score is issuer-defined but MUST be monotonic with respect to clearance favorability. |
 | `axes` | object | MUST | An object containing exactly five keys: `trademark`, `domain`, `distinctiveness`, `linguistic`, `cultural`. Each value is an axis object (§4). |
 | `verdict_id` | string | MUST | The verdict identifier (§2). |
@@ -166,8 +166,8 @@ Issuers MAY include additional fields prefixed with `x_` (extension fields). Con
 ### 3.4 Rationale
 
 - The verdict envelope is intentionally flat. A nested envelope would complicate signature verification across implementations.
-- The composite `verdict` label (`PASS` / `DECIDE` / `BLOCK` / `INSUFFICIENT_SIGNAL`) is distinct from per-axis statuses to allow issuers to apply their own synthesis policy while keeping per-axis semantics standardized.
-- `INSUFFICIENT_SIGNAL` at the top level is REQUIRED because conformant issuers MUST be able to refuse to issue a positive or negative verdict when the underlying data is unavailable. Honest negative space is a load-bearing property of this protocol.
+- The composite `verdict` label (`PROCEED` / `PROCEED_STRATEGIC` / `ABANDON`) is distinct from per-axis statuses to allow issuers to apply their own synthesis policy while keeping per-axis semantics standardized.
+- When the underlying data is unavailable for a high-confidence composite verdict, conformant issuers MUST set `status: "partial"` alongside the best-estimate `verdict` value. The `status` field is the protocol's honest-negative-space surface (was `INSUFFICIENT_SIGNAL` at the top level in the v1.0.0 draft). Honest negative space is a load-bearing property of this protocol.
 - The signature triple (`signature`, `signature_key_id`, `signature_payload_digest`) is denormalized so that consumers can verify without retrieving the original payload (§6).
 - `signature_co` exists so consumers caching only one key during an overlap window can still verify verdicts signed under either key without a directory refetch.
 
