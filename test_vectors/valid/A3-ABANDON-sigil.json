@@ -1,7 +1,10 @@
 {
   "evp_version": "1.0.0",
   "name": "Sigil",
-  "verdict": "BLOCK",
+  "verdict": "ABANDON",
+  "status": "complete",
+  "reason": "famous_mark",
+  "verdict_legacy": "ABANDON",
   "score": 18,
   "axes": {
     "trademark": {

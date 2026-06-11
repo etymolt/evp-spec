@@ -14,7 +14,8 @@
     "disclaimer",
     "signature",
     "signature_key_id",
-    "signature_payload_digest"
+    "signature_payload_digest",
+    "status"
   ],
   "properties": {
     "evp_version": {
@@ -26,11 +27,14 @@
       "minLength": 1,
       "maxLength": 64
     },
-    "verdict": [
-      "PROCEED",
-      "PROCEED_STRATEGIC",
-      "ABANDON"
-    ],
+    "verdict": {
+      "type": "string",
+      "enum": [
+        "PROCEED",
+        "PROCEED_STRATEGIC",
+        "ABANDON"
+      ]
+    },
     "score": {
       "type": "integer",
       "minimum": 0,
@@ -150,6 +154,37 @@
       "items": {
         "type": "string"
       }
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "complete",
+        "partial"
+      ],
+      "description": "Engine signal-sufficiency state. 'partial' indicates engine had insufficient signal; the verdict is the best estimate and the consumer should treat it as advisory."
+    },
+    "reason": {
+      "type": "string",
+      "enum": [
+        "clean",
+        "famous_mark",
+        "high_collision",
+        "no_distinctiveness",
+        "descriptive",
+        "insufficient_corpus"
+      ],
+      "description": "Stable closed-set sub-code explaining the verdict."
+    },
+    "verdict_legacy": {
+      "type": "string",
+      "enum": [
+        "PROCEED",
+        "DUE_DILIGENCE",
+        "ITERATE",
+        "ABANDON",
+        "INSUFFICIENT_SIGNAL"
+      ],
+      "description": "Engine's pre-2026-06-10 5-state internal verdict. OPTIONAL. Issuers MAY surface this for back-compat with consumers built before the 3-value cutover."
     }
   },
   "patternProperties": {

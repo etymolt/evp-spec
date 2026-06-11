@@ -1,7 +1,10 @@
 {
   "evp_version": "1.0.0",
   "name": "Aiyana",
-  "verdict": "INSUFFICIENT_SIGNAL",
+  "verdict": "PROCEED_STRATEGIC",
+  "status": "partial",
+  "reason": "insufficient_corpus",
+  "verdict_legacy": "INSUFFICIENT_SIGNAL",
   "score": 50,
   "axes": {
     "trademark": {

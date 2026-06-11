@@ -1,45 +1,55 @@
 {
   "evp_version": "1.0.0",
-  "name": "Stratagem",
-  "verdict": "DECIDE",
-  "score": 60,
+  "name": "Inkstack",
+  "verdict": "PROCEED",
+  "status": "complete",
+  "reason": "clean",
+  "verdict_legacy": "PROCEED",
+  "score": 87,
   "axes": {
     "trademark": {
-      "status": "CAUTION",
+      "status": "CLEAR",
       "jurisdictions_consulted": [
-        "EUIPO_live_API",
-        "UKIPO_domestic",
-        "USPTO_TTAB",
         "USPTO_bulk",
+        "UKIPO_domestic",
+        "EUIPO_live_API",
         "WIPO_Madrid_IR"
       ],
       "colliding_marks": [],
-      "coverage_caveat": "Common-word mark; class-dependent risk."
+      "nice_classes_assumed": [
+        9,
+        42
+      ]
     },
     "domain": {
-      "status": "CAUTION",
+      "status": "CLEAR",
       "tlds_consulted": [
         {
           "tld": ".com",
           "method": "RDAP_authoritative",
           "definitive": true,
-          "result": "registered"
+          "result": "available"
         }
       ],
-      "aftermarket_observed": true
+      "recommended_variant": {
+        "domain": "inkstack.com",
+        "registrar": "Cloudflare",
+        "price_usd": 10.44
+      },
+      "aftermarket_observed": false
     },
     "distinctiveness": {
-      "status": "WEAK",
+      "status": "STRONG",
+      "cohort_corpora_consulted": [
+        "yc_alumni_2014_2026"
+      ],
       "platforms_consulted": [
         {
           "platform": "github",
-          "status": "taken",
-          "url": "https://github.com/stratagem",
+          "status": "available",
+          "url": "https://github.com/inkstack",
           "claimed": true
         }
-      ],
-      "workaround_variants_available": [
-        "@stratagemhq"
       ]
     },
     "linguistic": {
@@ -49,16 +59,16 @@
     },
     "cultural": {
       "status": "CLEAR",
-      "sources_consulted": 32,
+      "sources_consulted": 9,
       "markets_covered": [
         "US",
         "UK",
-        "IN"
+        "DE"
       ]
     }
   },
-  "verdict_id": "v_ca83be889da34a",
-  "issued_at": "2026-06-05T04:15:41.185Z",
+  "verdict_id": "v_inkstack_a7f12bc",
+  "issued_at": "2026-06-10T14:22:01.413Z",
   "disclaimer": "Clearance signal, not legal advice. Confirm with trademark counsel before adopting a name in commerce. Data sources have stated freshness windows; refer to coverage_caveat per jurisdiction.",
   "signature": "uRgztcYFdlvQZDk1834gOG88NDL8e/hgo5bjG/GIpUZAZy0F1CXyIX1bOfFr7EToJsihPuNgPXRszKQCexSABw==",
   "signature_key_id": "etymolt-1779085662",
