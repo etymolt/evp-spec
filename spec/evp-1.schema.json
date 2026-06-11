@@ -45,28 +45,79 @@
       "required": [
         "trademark",
         "domain",
-        "distinctiveness",
-        "linguistic",
-        "cultural"
+        "cultural",
+        "sound_symbolism",
+        "pronunciation"
       ],
       "properties": {
         "trademark": {
-          "$ref": "#/$defs/trademark_axis"
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            {
+              "type": "object",
+              "description": "Full per-axis envelope (v1.1+ structured form)."
+            }
+          ]
         },
         "domain": {
-          "$ref": "#/$defs/domain_axis"
-        },
-        "distinctiveness": {
-          "$ref": "#/$defs/distinctiveness_axis"
-        },
-        "linguistic": {
-          "$ref": "#/$defs/linguistic_axis"
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            {
+              "type": "object",
+              "description": "Full per-axis envelope (v1.1+ structured form)."
+            }
+          ]
         },
         "cultural": {
-          "$ref": "#/$defs/cultural_axis"
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            {
+              "type": "object",
+              "description": "Full per-axis envelope (v1.1+ structured form)."
+            }
+          ]
+        },
+        "sound_symbolism": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            {
+              "type": "object",
+              "description": "Full per-axis envelope (v1.1+ structured form)."
+            }
+          ]
+        },
+        "pronunciation": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            {
+              "type": "object",
+              "description": "Full per-axis envelope (v1.1+ structured form)."
+            }
+          ]
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "description": "Per-axis verdict map. v1.0: each axis MAY be either (a) a flat integer 0-100 score (terse form, default API surface) or (b) an object with status/score/findings/evidence_of_record/coverage_caveat (structured form, recommended for verdicts that downstream agents will reason over). The 5 canonical axes are trademark, domain, cultural, sound_symbolism, pronunciation."
     },
     "verdict_id": {
       "type": "string",
@@ -201,267 +252,6 @@
         "INSUFFICIENT_SIGNAL",
         "UNKNOWN"
       ]
-    },
-    "trademark_axis": {
-      "type": "object",
-      "required": [
-        "status"
-      ],
-      "properties": {
-        "status": {
-          "$ref": "#/$defs/axis_status"
-        },
-        "jurisdictions_consulted": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "colliding_marks": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "wordmark": {
-                "type": "string"
-              },
-              "owner": {
-                "type": "string"
-              },
-              "serial_number": {
-                "type": "string"
-              },
-              "registration_number": {
-                "type": "string"
-              },
-              "nice_classes": {
-                "type": "array",
-                "items": {
-                  "type": "integer"
-                }
-              },
-              "filing_date": {
-                "type": "string",
-                "format": "date"
-              },
-              "status": {
-                "type": "string"
-              },
-              "deep_link": {
-                "type": "string",
-                "format": "uri"
-              }
-            }
-          }
-        },
-        "nice_classes_assumed": {
-          "type": "array",
-          "items": {
-            "type": "integer"
-          }
-        },
-        "coverage_caveat": {
-          "type": "string"
-        }
-      }
-    },
-    "domain_axis": {
-      "type": "object",
-      "required": [
-        "status"
-      ],
-      "properties": {
-        "status": {
-          "$ref": "#/$defs/axis_status"
-        },
-        "tlds_consulted": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "required": [
-              "tld",
-              "method",
-              "definitive",
-              "result"
-            ],
-            "properties": {
-              "tld": {
-                "type": "string"
-              },
-              "method": {
-                "type": "string",
-                "enum": [
-                  "RDAP_authoritative",
-                  "WHOIS_authoritative",
-                  "DNS_fallback"
-                ]
-              },
-              "definitive": {
-                "type": "boolean"
-              },
-              "result": {
-                "type": "string",
-                "enum": [
-                  "available",
-                  "registered",
-                  "unknown"
-                ]
-              }
-            }
-          }
-        },
-        "recommended_variant": {
-          "type": "object",
-          "properties": {
-            "domain": {
-              "type": "string"
-            },
-            "registrar": {
-              "type": "string"
-            },
-            "price_usd": {
-              "type": "number"
-            }
-          }
-        },
-        "aftermarket_observed": {
-          "type": "boolean"
-        }
-      }
-    },
-    "distinctiveness_axis": {
-      "type": "object",
-      "required": [
-        "status"
-      ],
-      "properties": {
-        "status": {
-          "type": "string",
-          "enum": [
-            "STRONG",
-            "MODERATE",
-            "WEAK",
-            "BLOCKED",
-            "INSUFFICIENT_SIGNAL",
-            "UNKNOWN"
-          ]
-        },
-        "cohort_corpora_consulted": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "platforms_consulted": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "platform": {
-                "type": "string"
-              },
-              "status": {
-                "type": "string",
-                "enum": [
-                  "available",
-                  "taken",
-                  "unknown"
-                ]
-              },
-              "url": {
-                "type": "string",
-                "format": "uri"
-              },
-              "claimed": {
-                "type": "boolean"
-              }
-            }
-          }
-        },
-        "workaround_variants_available": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "linguistic_axis": {
-      "type": "object",
-      "required": [
-        "status"
-      ],
-      "properties": {
-        "status": {
-          "$ref": "#/$defs/axis_status"
-        },
-        "locales_evaluated": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "phoneme_skeleton": {
-          "type": "string"
-        },
-        "sound_symbolism_axes": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "number"
-          }
-        },
-        "advisory": {
-          "type": "boolean"
-        },
-        "method": {
-          "type": "string"
-        }
-      }
-    },
-    "cultural_axis": {
-      "type": "object",
-      "required": [
-        "status"
-      ],
-      "properties": {
-        "status": {
-          "$ref": "#/$defs/axis_status"
-        },
-        "sources_consulted": {
-          "type": "integer",
-          "minimum": 0
-        },
-        "cultural_sources_consulted": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "source": {
-                "type": "string"
-              },
-              "matched": {
-                "type": [
-                  "boolean",
-                  "null"
-                ],
-                "description": "true if a hit was detected; false if cleanly searched and clear; null if the check was deferred (e.g., rate-limit shed for out-of-band processing)."
-              },
-              "language": {
-                "type": "string"
-              },
-              "caveat": {
-                "type": "string"
-              }
-            }
-          }
-        },
-        "markets_covered": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      }
     }
   }
 }

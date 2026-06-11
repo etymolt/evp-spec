@@ -48,31 +48,6 @@
       },
       "aftermarket_observed": true
     },
-    "distinctiveness": {
-      "status": "MODERATE",
-      "platforms_consulted": [
-        {
-          "platform": "github",
-          "status": "available",
-          "url": "https://github.com/aiyana",
-          "claimed": true
-        }
-      ],
-      "workaround_variants_available": [
-        "@aiyanahq",
-        "@useaiyana"
-      ]
-    },
-    "linguistic": {
-      "status": "CLEAR",
-      "locales_evaluated": [
-        "en-US",
-        "es-MX",
-        "pt-BR"
-      ],
-      "advisory": true,
-      "method": "static rule-based heuristic"
-    },
     "cultural": {
       "status": "INSUFFICIENT_SIGNAL",
       "sources_consulted": 28,
@@ -100,6 +75,31 @@
         "FR"
       ],
       "coverage_caveat": "2 of 7 consulted markets lacked Indigenous-Americas lexicon coverage; LLM panel did not return synchronously."
+    },
+    "sound_symbolism": {
+      "status": "MODERATE",
+      "platforms_consulted": [
+        {
+          "platform": "github",
+          "status": "available",
+          "url": "https://github.com/aiyana",
+          "claimed": true
+        }
+      ],
+      "workaround_variants_available": [
+        "@aiyanahq",
+        "@useaiyana"
+      ]
+    },
+    "pronunciation": {
+      "status": "CLEAR",
+      "locales_evaluated": [
+        "en-US",
+        "es-MX",
+        "pt-BR"
+      ],
+      "advisory": true,
+      "method": "static rule-based heuristic"
     }
   },
   "verdict_id": "v_aiyana_insig_a91f3c7d4e8f",

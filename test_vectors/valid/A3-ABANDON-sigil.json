@@ -44,17 +44,17 @@
       ],
       "aftermarket_observed": true
     },
-    "distinctiveness": {
-      "status": "BLOCKED",
-      "workaround_variants_available": []
-    },
-    "linguistic": {
-      "status": "CLEAR",
-      "advisory": true
-    },
     "cultural": {
       "status": "CLEAR",
       "sources_consulted": 32
+    },
+    "sound_symbolism": {
+      "status": "BLOCKED",
+      "workaround_variants_available": []
+    },
+    "pronunciation": {
+      "status": "CLEAR",
+      "advisory": true
     }
   },
   "verdict_id": "v_sigil_blocked_2026",

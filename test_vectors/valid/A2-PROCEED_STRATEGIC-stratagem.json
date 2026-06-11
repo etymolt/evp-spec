@@ -31,7 +31,16 @@
       ],
       "aftermarket_observed": true
     },
-    "distinctiveness": {
+    "cultural": {
+      "status": "CLEAR",
+      "sources_consulted": 32,
+      "markets_covered": [
+        "US",
+        "UK",
+        "IN"
+      ]
+    },
+    "sound_symbolism": {
       "status": "WEAK",
       "platforms_consulted": [
         {
@@ -45,19 +54,10 @@
         "@stratagemhq"
       ]
     },
-    "linguistic": {
+    "pronunciation": {
       "status": "CLEAR",
       "advisory": true,
       "method": "static rule-based heuristic"
-    },
-    "cultural": {
-      "status": "CLEAR",
-      "sources_consulted": 32,
-      "markets_covered": [
-        "US",
-        "UK",
-        "IN"
-      ]
     }
   },
   "verdict_id": "v_ca83be889da34a",

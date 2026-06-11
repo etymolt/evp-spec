@@ -38,7 +38,16 @@
       },
       "aftermarket_observed": false
     },
-    "distinctiveness": {
+    "cultural": {
+      "status": "CLEAR",
+      "sources_consulted": 9,
+      "markets_covered": [
+        "US",
+        "UK",
+        "DE"
+      ]
+    },
+    "sound_symbolism": {
       "status": "STRONG",
       "cohort_corpora_consulted": [
         "yc_alumni_2014_2026"
@@ -52,19 +61,10 @@
         }
       ]
     },
-    "linguistic": {
+    "pronunciation": {
       "status": "CLEAR",
       "advisory": true,
       "method": "static rule-based heuristic"
-    },
-    "cultural": {
-      "status": "CLEAR",
-      "sources_consulted": 9,
-      "markets_covered": [
-        "US",
-        "UK",
-        "DE"
-      ]
     }
   },
   "verdict_id": "v_inkstack_a7f12bc",
