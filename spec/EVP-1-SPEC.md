@@ -246,7 +246,7 @@ EVP/1 defines exactly five axes. Conformant verdicts MUST include all five, in t
 
 **Status taxonomy.** `CLEAR`, `CAUTION`, `BLOCKED`, `INSUFFICIENT_SIGNAL`, `UNKNOWN`.
 
-The linguistic axis is **advisory** by default; conformant issuers SHOULD mark it as `advisory: true` in axis-level metadata. An advisory axis MAY influence `score` but SHOULD NOT, alone, drive a composite `BLOCK` verdict.
+The linguistic axis is **advisory** by default; conformant issuers SHOULD mark it as `advisory: true` in axis-level metadata. An advisory axis MAY influence `score` but SHOULD NOT, alone, drive a composite `ABANDON` verdict.
 
 **Recommended fields.**
 
@@ -552,7 +552,7 @@ A consumer implementation is **EVP/1-compliant** if and only if:
 4. It performs signature verification per §6.3 before treating a verdict as trusted.
 5. It consults the revocation list per §6.5.2 before treating a verdict as trusted.
 6. It tolerates minor-version increments without breakage.
-7. It treats `INSUFFICIENT_SIGNAL` at the top level as distinct from `PASS`, `DECIDE`, and `BLOCK`, and MUST NOT silently coerce it into any of those values for display.
+7. It treats `status: "partial"` as distinct from `status: "complete"`, regardless of the verdict label (`PROCEED` / `PROCEED_STRATEGIC` / `ABANDON`),, and MUST NOT silently coerce it into any of those values for display.
 
 ### 8.2 Compliance badge
 
@@ -568,7 +568,7 @@ The badge SHOULD link to the canonical specification URL.
 
 The repository at `https://github.com/etymolt/evp-spec` includes a `test_vectors/` directory containing:
 
-- `valid/` — at least **13** verdicts that MUST validate, with expected signature verification results. The valid suite MUST include at least one verdict per composite-verdict label: `PASS`, `DECIDE`, `BLOCK`, and `INSUFFICIENT_SIGNAL`. The `INSUFFICIENT_SIGNAL` acceptance test (`valid/insufficient_signal_aiyana.json`) corresponds to Appendix §B.4 of this document and MUST be accepted by conformant consumers without coercion to any other composite label.
+- `valid/` — at least **13** verdicts that MUST validate, with expected signature verification results. The valid suite MUST include at least one verdict per composite-verdict label: `PROCEED`, `PROCEED_STRATEGIC`, and `ABANDON` (plus a `status: "partial"` example for the engine-uncertain case). The `INSUFFICIENT_SIGNAL` acceptance test (`valid/insufficient_signal_aiyana.json`) corresponds to Appendix §B.4 of this document and MUST be accepted by conformant consumers without coercion to any other composite label.
 - `invalid/` — at least **12** verdicts that MUST be rejected, each annotated with the failure condition. The invalid suite MUST cover: missing required field, wrong enum value, malformed signature, schema-violating `axes` shape, expired-key signature, revoked-key signature, and digest mismatch.
 - `canonicalization/` — JCS canonicalization fixtures covering Unicode normalization, number representation, key ordering edge cases, and `signature_co` strip behavior.
 - `key_rotation/` — fixtures covering the 7-day overlap window: a verdict dual-signed under `K_old` and `K_new`, a verdict signed under `K_new` alone after overlap close, and a verdict signed under a revoked key.
@@ -667,7 +667,7 @@ The open comment period closes **2026-09-10** (90 days). The editor will publish
     },
     "verdict": {
       "type": "string",
-      "enum": ["PASS", "DECIDE", "BLOCK", "INSUFFICIENT_SIGNAL"]
+      "enum": ["PROCEED", "PROCEED_STRATEGIC", "ABANDON"]
     },
     "score": {
       "type": "integer",
@@ -869,13 +869,15 @@ The open comment period closes **2026-09-10** (90 days). The editor will publish
 
 ## Appendix B — Sample verdicts
 
-### B.1 Sample: PASS (ship)
+### B.1 Sample: PROCEED (ship)
 
 ```json
 {
   "evp_version": "1.0.0",
   "name": "Inkstack",
-  "verdict": "PASS",
+  "verdict": "PROCEED",
+  "status": "complete",
+  "reason": "clean",
   "score": 87,
   "axes": {
     "trademark": {
@@ -923,13 +925,15 @@ The open comment period closes **2026-09-10** (90 days). The editor will publish
 }
 ```
 
-### B.2 Sample: DECIDE (workable with caveats)
+### B.2 Sample: PROCEED_STRATEGIC (workable with caveats)
 
 ```json
 {
   "evp_version": "1.0.0",
   "name": "Stratagem",
-  "verdict": "DECIDE",
+  "verdict": "PROCEED_STRATEGIC",
+  "status": "complete",
+  "reason": "high_collision",
   "score": 60,
   "axes": {
     "trademark": {
@@ -987,13 +991,15 @@ The open comment period closes **2026-09-10** (90 days). The editor will publish
 }
 ```
 
-### B.3 Sample: BLOCK
+### B.3 Sample: ABANDON
 
 ```json
 {
   "evp_version": "1.0.0",
   "name": "Sigil",
-  "verdict": "BLOCK",
+  "verdict": "ABANDON",
+  "status": "complete",
+  "reason": "famous_mark",
   "score": 18,
   "axes": {
     "trademark": {
@@ -1042,7 +1048,7 @@ The open comment period closes **2026-09-10** (90 days). The editor will publish
 }
 ```
 
-### B.4 Sample: INSUFFICIENT_SIGNAL (top-level)
+### B.4 Sample: status='partial' (engine signal insufficient)
 
 This sample illustrates the composite `INSUFFICIENT_SIGNAL` verdict — the most operationally important edge case for honest negative space. The candidate `"Aiyana"` is a non-English given name with sparse registry coverage in the markets where it most plausibly carries a sacred-name or culturally significant association. The trademark axis returns `INSUFFICIENT_SIGNAL` because authoritative registers in three of seven jurisdictions did not respond definitively; the cultural axis returns `INSUFFICIENT_SIGNAL` because two of the consulted markets lacked lexicon coverage. A conformant issuer MUST NOT synthesize this to `DECIDE` — the absence of data is not a soft signal; it is a coverage failure, and the consumer is entitled to know.
 
@@ -1052,7 +1058,9 @@ A conformant consumer receiving this verdict MUST NOT display "low score, procee
 {
   "evp_version": "1.0.0",
   "name": "Aiyana",
-  "verdict": "INSUFFICIENT_SIGNAL",
+  "verdict": "PROCEED_STRATEGIC",
+  "status": "partial",
+  "reason": "insufficient_corpus",
   "score": 50,
   "axes": {
     "trademark": {
